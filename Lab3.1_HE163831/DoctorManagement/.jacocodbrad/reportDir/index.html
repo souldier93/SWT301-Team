@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+DoctorManagement @ 2024-09-25 17:31:45
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+.tTable {display: table;}
+.tRow {display: table-row;}
+.tCellLeft {display: table-cell; vertical-align: top; width: 25%; max-width: 220px;}
+.tCellRight {display: table-cell; vertical-align: top;}
+.pctstr {font-family: courier; font-size: 0.95em;}
+.linkcons {text-decoration: underline;}
+.riframe {position: absolute; width: 73%;height: 85%;}
+.ulnoindent {padding-left: 1.2em;}
+.lilist {cursor:pointer;}
+body, td {font-family:sans-serif; font-size:10pt;}
+h1 {font-weight:bold;  font-size:18pt;}
+</style>
+<script>
+function changeIframe(thisEle) {
+  var nuIframeSrc = thisEle.getAttribute('data-link');
+  var iframeEle = document.getElementById('riframeitem');
+  iframeEle.setAttribute('src', nuIframeSrc);
+  
+  var liItemsArr = document.getElementsByClassName('lilist');
+  for(i = 0; i < liItemsArr.length; i++){
+    liItemsArr[i].style.color = 'blue';
+  }
+  thisEle.style.color = 'black';
+};
+ 
+function typeIframe(thisEle, evt) {
+  if(evt != undefined) { 
+    var c = evt.which; 
+    if (c === 13 || c === 10 || c == 32) {
+      changeIframe(thisEle);
+    }
+  }
+};
+</script>
+</head>
+<body>
+<h1>
+Jacoco by-project for: DoctorManagement @ 2024-09-25 17:31:45
+</h1>
+<div class='tTable'>
+<div class='tRow'>
+<div class='tCellLeft'>
+<p>
+The following list links to each project &amp; source-code folder group of data:
+</p>
+<ul class='ulnoindent'>
+<li class='lilist' tabindex='0' onclick='changeIframe(this);' onkeypress='typeIframe(this, event);' data-link='./DoctorManagement_Source Packages.report.html/index.html' style='color: black;'>
+<span class='pctstr'>&nbsp;&nbsp;0%</span> <span class='linkcons'>DoctorManagement_Source Packages</span>
+</li>
+</ul>
+</div>
+<div class='tCellRight'>
+<iframe class='riframe' id='riframeitem' src='./DoctorManagement_Source Packages.report.html/index.html' onload='resizeIframe(this);'>
+</iframe>
+</div>
+</div>
+</div>
+</body>
+</html>

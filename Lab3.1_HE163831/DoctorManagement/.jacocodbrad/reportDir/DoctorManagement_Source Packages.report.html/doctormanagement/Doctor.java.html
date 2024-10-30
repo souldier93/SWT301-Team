@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Doctor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo analysis: &quot;DoctorManagement: Source Packages&quot; (uses JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">doctormanagement</a> &gt; <span class="el_source">Doctor.java</span></div><h1>Doctor.java</h1><pre class="source lang-java linenums">package doctormanagement;
+
+public class Doctor {
+<span class="nc" id="L4">    private static int idCounter = 1;</span>
+    private int id;
+    private String name;
+    private String dateOfBirth;
+    private String specialization;
+    private int availability;
+    private String email;
+    private String mobile;
+
+<span class="nc" id="L13">    public Doctor(String name, String dateOfBirth, String specialization, int availability, String email, String mobile) {</span>
+<span class="nc" id="L14">        setId();</span>
+<span class="nc" id="L15">        setName(name);</span>
+<span class="nc" id="L16">        setDateOfBirth(dateOfBirth);</span>
+<span class="nc" id="L17">        setSpecialization(specialization);</span>
+<span class="nc" id="L18">        setAvailability(availability);</span>
+<span class="nc" id="L19">        setEmail(email);</span>
+<span class="nc" id="L20">        setMobile(mobile);</span>
+<span class="nc" id="L21">    }</span>
+
+    // Auto-incremented ID
+    private void setId() {
+<span class="nc" id="L25">        this.id = idCounter++;</span>
+<span class="nc" id="L26">    }</span>
+
+    // Getters and setters with validation
+    public int getId() {
+<span class="nc" id="L30">        return id;</span>
+    }
+
+    public String getName() {
+<span class="nc" id="L34">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc bnc" id="L38" title="All 6 branches missed.">        if (name == null || name.isEmpty() || name.length() &gt; 50) {</span>
+<span class="nc" id="L39">            throw new IllegalArgumentException(&quot;Name must be between 1 and 50 characters.&quot;);</span>
+        }
+<span class="nc" id="L41">        this.name = name;</span>
+<span class="nc" id="L42">    }</span>
+
+    public String getDateOfBirth() {
+<span class="nc" id="L45">        return dateOfBirth;</span>
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+<span class="nc bnc" id="L49" title="All 4 branches missed.">        if (dateOfBirth == null || !dateOfBirth.matches(&quot;\\d{2}/\\d{2}/\\d{4}&quot;)) {</span>
+<span class="nc" id="L50">            throw new IllegalArgumentException(&quot;Date of birth must be in the format dd/MM/yyyy.&quot;);</span>
+        }
+<span class="nc" id="L52">        this.dateOfBirth = dateOfBirth;</span>
+<span class="nc" id="L53">    }</span>
+
+    public String getSpecialization() {
+<span class="nc" id="L56">        return specialization;</span>
+    }
+
+    public void setSpecialization(String specialization) {
+<span class="nc bnc" id="L60" title="All 4 branches missed.">        if (specialization == null || specialization.length() &gt; 255) {</span>
+<span class="nc" id="L61">            throw new IllegalArgumentException(&quot;Specialization must be less than 255 characters.&quot;);</span>
+        }
+<span class="nc" id="L63">        this.specialization = specialization;</span>
+<span class="nc" id="L64">    }</span>
+
+    public int getAvailability() {
+<span class="nc" id="L67">        return availability;</span>
+    }
+
+    public void setAvailability(int availability) {
+<span class="nc bnc" id="L71" title="All 4 branches missed.">        if (availability &lt; 0 || availability &gt; 3) {</span>
+<span class="nc" id="L72">            throw new IllegalArgumentException(&quot;Availability must be between 0 and 3.&quot;);</span>
+        }
+<span class="nc" id="L74">        this.availability = availability;</span>
+<span class="nc" id="L75">    }</span>
+
+    public String getEmail() {
+<span class="nc" id="L78">        return email;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (!email.matches(&quot;^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$&quot;)) {</span>
+<span class="nc" id="L83">            throw new IllegalArgumentException(&quot;Invalid email format.&quot;);</span>
+        }
+<span class="nc" id="L85">        this.email = email;</span>
+<span class="nc" id="L86">    }</span>
+
+    public String getMobile() {
+<span class="nc" id="L89">        return mobile;</span>
+    }
+
+    public void setMobile(String mobile) {
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        if (!mobile.matches(&quot;\\(\\d{3}\\)-\\d{3}-\\d{4}&quot;)) {</span>
+<span class="nc" id="L94">            throw new IllegalArgumentException(&quot;Mobile number must be in the format (000)-000-0000.&quot;);</span>
+        }
+<span class="nc" id="L96">        this.mobile = mobile;</span>
+<span class="nc" id="L97">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L101">        return &quot;Doctor ID: &quot; + id + &quot;\nName: &quot; + name + &quot;\nDate of Birth: &quot; + dateOfBirth + </span>
+               &quot;\nSpecialization: &quot; + specialization + &quot;\nAvailability: &quot; + availability + 
+               &quot;\nEmail: &quot; + email + &quot;\nMobile: &quot; + mobile;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+<span class="nc bnc" id="L108" title="All 2 branches missed.">        if (this == obj) return true;</span>
+<span class="nc bnc" id="L109" title="All 4 branches missed.">        if (obj == null || getClass() != obj.getClass()) return false;</span>
+
+<span class="nc" id="L111">        Doctor doctor = (Doctor) obj;</span>
+
+<span class="nc bnc" id="L113" title="All 2 branches missed.">        if (id != doctor.id) return false;</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">        if (!name.equals(doctor.name)) return false;</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">        if (!dateOfBirth.equals(doctor.dateOfBirth)) return false;</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        if (!specialization.equals(doctor.specialization)) return false;</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">        if (!email.equals(doctor.email)) return false;</span>
+<span class="nc" id="L118">        return mobile.equals(doctor.mobile);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L123">        int result = id;</span>
+<span class="nc" id="L124">        result = 31 * result + name.hashCode();</span>
+<span class="nc" id="L125">        result = 31 * result + dateOfBirth.hashCode();</span>
+<span class="nc" id="L126">        result = 31 * result + specialization.hashCode();</span>
+<span class="nc" id="L127">        result = 31 * result + email.hashCode();</span>
+<span class="nc" id="L128">        result = 31 * result + mobile.hashCode();</span>
+<span class="nc" id="L129">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
